@@ -1,0 +1,216 @@
+[webserver]
+port = ":8080"
+  [webserver.headers]
+  # redefine default cors origin
+  Access-Control-Allow-Origin = "*"
+
+# register data providers
+[[providers]]
+name = "lubelskie"                 # provider name is referenced from map layers
+type = "postgis"                   # the type of data provider. currently only supports postgis
+host = "${POSTGRES_HOST}"          # postgis database host
+port = "${POSTGRES_PORT}"          # postgis database port
+database = "${POSTGRES_DB}"        # postgis database name
+user = "${POSTGRES_USER}"          # postgis database user
+password = "${POSTGRES_PASSWORD}"  # postgis database password
+srid = 4326                        # The default srid for this provider. If not provided it will be WebMercator (3857)
+
+  [[providers.layers]]
+  name = "buildings"
+  geometry_fieldname = "geom"
+  id_fieldname = "gid"
+  sql = "SELECT ST_AsBinary(geom) AS geom, name, gid FROM gis_osm_buildings_a_free_1 WHERE geom && !BBOX!"
+
+  [[providers.layers]]
+  name = "landuse"
+  geometry_fieldname = "geom"
+  id_fieldname = "gid"
+  sql = "SELECT ST_AsBinary(geom) AS geom, name, gid FROM gis_osm_landuse_a_free_1 WHERE geom && !BBOX!"
+
+  [[providers.layers]]
+  name = "natural_poly"
+  geometry_fieldname = "geom"
+  id_fieldname = "gid"
+  sql = "SELECT ST_AsBinary(geom) AS geom, name, gid FROM gis_osm_natural_a_free_1 WHERE geom && !BBOX!"
+
+  [[providers.layers]]
+  name = "natural_points"
+  geometry_fieldname = "geom"
+  id_fieldname = "gid"
+  sql = "SELECT ST_AsBinary(geom) AS geom, name, gid FROM gis_osm_natural_free_1 WHERE geom && !BBOX!"
+
+  [[providers.layers]]
+  name = "places_poly"
+  geometry_fieldname = "geom"
+  id_fieldname = "gid"
+  sql = "SELECT ST_AsBinary(geom) AS geom, name, gid FROM gis_osm_places_a_free_1 WHERE geom && !BBOX!"
+
+  [[providers.layers]]
+  name = "places_points"
+  geometry_fieldname = "geom"
+  id_fieldname = "gid"
+  sql = "SELECT ST_AsBinary(geom) AS geom, name, gid FROM gis_osm_places_free_1 WHERE geom && !BBOX!"
+
+  [[providers.layers]]
+  name = "pofw_poly"
+  geometry_fieldname = "geom"
+  id_fieldname = "gid"
+  sql = "SELECT ST_AsBinary(geom) AS geom, name, gid FROM gis_osm_pofw_a_free_1 WHERE geom && !BBOX!"
+
+  [[providers.layers]]
+  name = "pofw_points"
+  geometry_fieldname = "geom"
+  id_fieldname = "gid"
+  sql = "SELECT ST_AsBinary(geom) AS geom, name, gid FROM gis_osm_pofw_free_1 WHERE geom && !BBOX!"
+
+  [[providers.layers]]
+  name = "pois_poly"
+  geometry_fieldname = "geom"
+  id_fieldname = "gid"
+  sql = "SELECT ST_AsBinary(geom) AS geom, name, gid FROM gis_osm_pois_a_free_1 WHERE geom && !BBOX!"
+
+  [[providers.layers]]
+  name = "pois_points"
+  geometry_fieldname = "geom"
+  id_fieldname = "gid"
+  sql = "SELECT ST_AsBinary(geom) AS geom, name, gid FROM gis_osm_pois_free_1 WHERE geom && !BBOX!"
+
+  [[providers.layers]]
+  name = "railways"
+  geometry_fieldname = "geom"
+  id_fieldname = "gid"
+  sql = "SELECT ST_AsBinary(geom) AS geom, name, gid FROM gis_osm_railways_free_1 WHERE geom && !BBOX!"
+
+  [[providers.layers]]
+  name = "roads"
+  geometry_fieldname = "geom"
+  id_fieldname = "gid"
+  sql = "SELECT ST_AsBinary(geom) AS geom, name, gid FROM gis_osm_roads_free_1 WHERE geom && !BBOX!" 
+
+  [[providers.layers]]
+  name = "traffic_poly"
+  geometry_fieldname = "geom"
+  id_fieldname = "gid"
+  sql = "SELECT ST_AsBinary(geom) AS geom, name, gid FROM gis_osm_traffic_a_free_1 WHERE geom && !BBOX!" 
+
+  [[providers.layers]]
+  name = "traffic_points"
+  geometry_fieldname = "geom"
+  id_fieldname = "gid"
+  sql = "SELECT ST_AsBinary(geom) AS geom, name, gid FROM gis_osm_traffic_free_1 WHERE geom && !BBOX!" 
+
+  [[providers.layers]]
+  name = "transport_poly"
+  geometry_fieldname = "geom"
+  id_fieldname = "gid"
+  sql = "SELECT ST_AsBinary(geom) AS geom, name, gid FROM gis_osm_transport_a_free_1 WHERE geom && !BBOX!" 
+
+  [[providers.layers]]
+  name = "transport_points"
+  geometry_fieldname = "geom"
+  id_fieldname = "gid"
+  sql = "SELECT ST_AsBinary(geom) AS geom, name, gid FROM gis_osm_transport_free_1 WHERE geom && !BBOX!" 
+
+  [[providers.layers]]
+  name = "water"
+  geometry_fieldname = "geom"
+  id_fieldname = "gid"
+  sql = "SELECT ST_AsBinary(geom) AS geom, name, gid FROM gis_osm_water_a_free_1 WHERE geom && !BBOX!" 
+
+  [[providers.layers]]
+  name = "waterways"
+  geometry_fieldname = "geom"
+  id_fieldname = "gid"
+  sql = "SELECT ST_AsBinary(geom) AS geom, name, gid FROM gis_osm_waterways_free_1 WHERE geom && !BBOX!" 
+
+
+[[maps]]
+name = "lubelskie"
+center = [22.56667, 51.52, 11.0] # set the center of the map so the user is auto navigated to Lublin
+
+  [[maps.layers]]
+  provider_layer = "lubelskie.buildings"
+  min_zoom = 10
+  max_zoom = 20
+
+  [[maps.layers]]
+  provider_layer = "lubelskie.landuse"
+  min_zoom = 5
+  max_zoom = 20
+
+  [[maps.layers]]
+  provider_layer = "lubelskie.natural_poly"
+  min_zoom = 5
+  max_zoom = 20
+
+  [[maps.layers]]
+  provider_layer = "lubelskie.natural_points"
+  min_zoom = 5
+  max_zoom = 20
+
+  [[maps.layers]]
+  provider_layer = "lubelskie.places_poly"
+  min_zoom = 5
+  max_zoom = 20
+    
+  [[maps.layers]]
+  provider_layer = "lubelskie.places_points"
+  min_zoom = 5
+  max_zoom = 20  
+
+  [[maps.layers]]
+  provider_layer = "lubelskie.pofw_poly"
+  min_zoom = 5
+  max_zoom = 20
+
+  [[maps.layers]]
+  provider_layer = "lubelskie.pofw_points"
+  min_zoom = 5
+  max_zoom = 20
+
+  [[maps.layers]]
+  provider_layer = "lubelskie.pois_poly"
+  min_zoom = 5
+  max_zoom = 20
+
+  [[maps.layers]]
+  provider_layer = "lubelskie.pois_points"
+  min_zoom = 5
+  max_zoom = 20
+
+  [[maps.layers]]
+  provider_layer = "lubelskie.railways"
+  min_zoom = 5
+  max_zoom = 20
+
+  [[maps.layers]]
+  provider_layer = "lubelskie.roads"
+  min_zoom = 5
+  max_zoom = 20
+
+  [[maps.layers]]
+  provider_layer = "lubelskie.traffic_poly"
+  min_zoom = 5
+  max_zoom = 20
+
+  [[maps.layers]]
+  provider_layer = "lubelskie.traffic_points"
+  min_zoom = 5
+  max_zoom = 20
+
+  [[maps.layers]]
+  provider_layer = "lubelskie.water"
+  min_zoom = 5
+  max_zoom = 20
+
+  [[maps.layers]]
+  provider_layer = "lubelskie.waterways"
+  min_zoom = 5
+  max_zoom = 20
+
+[cache]
+type="file"
+basepath="/opt/tegola_config/cache"
+
+#type="redis"
+#address="redis:6379"

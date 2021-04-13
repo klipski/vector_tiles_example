@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  redis:
+    container_name: redis
+    image: redis:6.2
+
+  postgis:
+    container_name: postgis
+    image: postgis/postgis:13-3.1-alpine
+    restart: always
+    volumes:
+      - "postgis_db:/var/lib/postgresql/data"
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+
+  tegola:
+    container_name: tegola
+    image: gospatial/tegola:latest
+    command: serve --config=/opt/tegola_config/config.toml
+    env_file:
+      - .env
+    volumes:
+      - "./tegola_config:/opt/tegola_config"
+    ports:
+      - "80:8080"
+    depends_on:
+      - postgis  
+      - redis
+
+  maputnik:
+    container_name: maputnik
+    image: maputnik/editor:latest
+    ports:
+      - "8888:8888"
+
+volumes:
+  postgis_db:
+    external: true
