@@ -13,7 +13,11 @@ docker volume create --name=postgis_db
 # install and run database
 docker-compose up -d postgis
 ```
-Add initial data from `lubelskie.sql`
+Load initial data from `lubelskie.sql`
+
+```
+psql -h localhost -d db_name -U user < lubelskie.sql
+```
 
 ```
 # run all containers

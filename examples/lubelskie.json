@@ -20,24 +20,116 @@
       "tiles": ["http://localhost/maps/lubelskie/waterways/{z}/{x}/{y}.pbf"],
       "minZoom": 0,
       "maxZoom": 14
+    },
+    "water": {
+      "type": "vector",
+      "tiles": ["http://localhost/maps/lubelskie/water/{z}/{x}/{y}.pbf"],
+      "minZoom": 0,
+      "maxZoom": 14
+    },
+    "traffic_poly": {
+      "type": "vector",
+      "tiles": ["http://localhost/maps/lubelskie/traffic_poly/{z}/{x}/{y}.pbf"],
+      "minZoom": 0,
+      "maxZoom": 14
+    },
+    "traffic_points": {
+      "type": "vector",
+      "tiles": [
+        "http://localhost/maps/lubelskie/traffic_points/{z}/{x}/{y}.pbf"
+      ],
+      "minZoom": 0,
+      "maxZoom": 14
+    },
+    "roads": {
+      "type": "vector",
+      "tiles": ["http://localhost/maps/lubelskie/roads/{z}/{x}/{y}.pbf"],
+      "minZoom": 0,
+      "maxZoom": 14
+    },
+    "railways": {
+      "type": "vector",
+      "tiles": ["http://localhost/maps/lubelskie/railways/{z}/{x}/{y}.pbf"],
+      "minZoom": 0,
+      "maxZoom": 14
+    },
+    "pois_points": {
+      "type": "vector",
+      "tiles": ["http://localhost/maps/lubelskie/pois_points/{z}/{x}/{y}.pbf"],
+      "minZoom": 0,
+      "maxZoom": 14
+    },
+    "pois_poly": {
+      "type": "vector",
+      "tiles": ["http://localhost/maps/lubelskie/pois_poly/{z}/{x}/{y}.pbf"],
+      "minZoom": 0,
+      "maxZoom": 14
+    },
+    "pofw_points": {
+      "type": "vector",
+      "tiles": ["http://localhost/maps/lubelskie/pofw_points/{z}/{x}/{y}.pbf"],
+      "minZoom": 0,
+      "maxZoom": 14
+    },
+    "pofw_poly": {
+      "type": "vector",
+      "tiles": ["http://localhost/maps/lubelskie/pofw_poly/{z}/{x}/{y}.pbf"],
+      "minZoom": 0,
+      "maxZoom": 14
+    },
+    "places_poly": {
+      "type": "vector",
+      "tiles": ["http://localhost/maps/lubelskie/places_poly/{z}/{x}/{y}.pbf"],
+      "minZoom": 0,
+      "maxZoom": 14
+    },
+    "places_points": {
+      "type": "vector",
+      "tiles": [
+        "http://localhost/maps/lubelskie/places_points/{z}/{x}/{y}.pbf"
+      ],
+      "minZoom": 0,
+      "maxZoom": 14
+    },
+    "natural_points": {
+      "type": "vector",
+      "tiles": [
+        "http://localhost/maps/lubelskie/natural_points/{z}/{x}/{y}.pbf"
+      ],
+      "minZoom": 0,
+      "maxZoom": 14
+    },
+    "natural_poly": {
+      "type": "vector",
+      "tiles": ["http://localhost/maps/lubelskie/natural_poly/{z}/{x}/{y}.pbf"],
+      "minZoom": 0,
+      "maxZoom": 14
+    },
+    "landuse": {
+      "type": "vector",
+      "tiles": ["http://localhost/maps/lubelskie/landuse/{z}/{x}/{y}.pbf"],
+      "minZoom": 0,
+      "maxZoom": 14
     }
   },
+  "sprite": "https://maputnik.github.io/osm-liberty/sprites/osm-liberty",
+  "glyphs": "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key={key}",
   "layers": [
     {
       "id": "landuse",
       "type": "fill",
-      "source": "lubelskie",
+      "source": "landuse",
       "source-layer": "landuse",
       "layout": {"visibility": "visible"},
       "paint": {
-        "fill-color": "rgba(188,103,228,0.1)",
+        "fill-color": "rgba(129, 228, 103, 0.7)",
         "fill-outline-color": "#bc67e4"
       }
     },
     {
       "id": "natural_poly",
       "type": "fill",
-      "source": "lubelskie",
+      "source": "natural_poly",
       "source-layer": "natural_poly",
       "layout": {"visibility": "visible"},
       "paint": {
@@ -48,7 +140,7 @@
     {
       "id": "natural_points",
       "type": "circle",
-      "source": "lubelskie",
+      "source": "natural_points",
       "source-layer": "natural_points",
       "layout": {"visibility": "visible"},
       "paint": {"circle-radius": 3, "circle-color": "#b97174"}
@@ -56,7 +148,7 @@
     {
       "id": "places_poly",
       "type": "fill",
-      "source": "lubelskie",
+      "source": "places_poly",
       "source-layer": "places_poly",
       "layout": {"visibility": "visible"},
       "paint": {
@@ -67,7 +159,7 @@
     {
       "id": "places_points",
       "type": "circle",
-      "source": "lubelskie",
+      "source": "places_points",
       "source-layer": "places_points",
       "layout": {"visibility": "visible"},
       "paint": {"circle-radius": 3, "circle-color": "#366456"}
@@ -75,7 +167,7 @@
     {
       "id": "pofw_poly",
       "type": "fill",
-      "source": "lubelskie",
+      "source": "pofw_poly",
       "source-layer": "pofw_poly",
       "layout": {"visibility": "visible"},
       "paint": {
@@ -86,7 +178,7 @@
     {
       "id": "pofw_points",
       "type": "circle",
-      "source": "lubelskie",
+      "source": "pofw_points",
       "source-layer": "pofw_points",
       "layout": {"visibility": "visible"},
       "paint": {"circle-radius": 3, "circle-color": "#f2b0b2"}
@@ -94,7 +186,7 @@
     {
       "id": "pois_poly",
       "type": "fill",
-      "source": "lubelskie",
+      "source": "pois_poly",
       "source-layer": "pois_poly",
       "layout": {"visibility": "visible"},
       "paint": {
@@ -105,7 +197,7 @@
     {
       "id": "pois_points",
       "type": "circle",
-      "source": "lubelskie",
+      "source": "pois_points",
       "source-layer": "pois_points",
       "layout": {"visibility": "visible"},
       "paint": {"circle-radius": 3, "circle-color": "#794afb"}
@@ -113,7 +205,7 @@
     {
       "id": "railways",
       "type": "line",
-      "source": "lubelskie",
+      "source": "railways",
       "source-layer": "railways",
       "layout": {"visibility": "visible"},
       "paint": {"line-color": "#f6c5d8"}
@@ -121,9 +213,9 @@
     {
       "id": "roads",
       "type": "line",
-      "source": "lubelskie",
+      "source": "roads",
       "source-layer": "roads",
-      "layout": {"visibility": "none"},
+      "layout": {"visibility": "visible"},
       "paint": {
         "line-color": "rgba(222, 232, 72, 1)",
         "line-width": {"stops": [[10, 5], [18, 15], [22, 25]]}
@@ -132,7 +224,7 @@
     {
       "id": "traffic_poly",
       "type": "fill",
-      "source": "lubelskie",
+      "source": "traffic_poly",
       "source-layer": "traffic_poly",
       "layout": {"visibility": "visible"},
       "paint": {
@@ -143,21 +235,10 @@
     {
       "id": "traffic_points",
       "type": "circle",
-      "source": "lubelskie",
+      "source": "traffic_points",
       "source-layer": "traffic_points",
       "layout": {"visibility": "visible"},
       "paint": {"circle-radius": 3, "circle-color": "#65718c"}
-    },
-    {
-      "id": "water",
-      "type": "fill",
-      "source": "lubelskie",
-      "source-layer": "water",
-      "layout": {"visibility": "none"},
-      "paint": {
-        "fill-color": "rgba(139, 230, 230, 1)",
-        "fill-outline-color": "#17c5ba"
-      }
     },
     {
       "id": "waterways",
@@ -179,6 +260,24 @@
       "paint": {
         "fill-color": "rgba(82, 60, 7, 1)",
         "fill-outline-color": "#3f4488"
+      }
+    },
+    {
+      "id": "roads-label",
+      "type": "symbol",
+      "source": "roads",
+      "source-layer": "roads",
+      "layout": {"symbol-placement": "line", "text-field": "{name}"}
+    },
+    {
+      "id": "water",
+      "type": "fill",
+      "source": "water",
+      "source-layer": "water",
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "fill-color": "rgba(123, 187, 206, 1)",
+        "fill-outline-color": "#17c5ba"
       }
     }
   ],

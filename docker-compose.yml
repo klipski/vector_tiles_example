@@ -1,6 +1,17 @@
 version: "3.9"
 
 services:
+  nginx:
+    container_name: nginx
+    image: nginx:1.15-alpine
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    restart: unless-stopped
+    volumes:
+      - ./nginx_config:/etc/nginx/conf.d
+      - ./examples:/www/data
+    ports:
+      - "8000:80"
+
   redis:
     container_name: redis
     image: redis:6.2
