@@ -1,4 +1,4 @@
-# drawer-backend
+# vector_tiles_example
 
 ## Description
 This is a repository that contains example configuration for serving maps with vector tiles.
@@ -26,6 +26,6 @@ docker-compose up -d
 
 ## Features
 * PostgreSQL 13.1 with PostGIS
-* Tegola
+* Tegola at http://localhost:80
 * Redis as vector tile cache
-* Maputnik
+* Maputnik at http://localhost:8888
